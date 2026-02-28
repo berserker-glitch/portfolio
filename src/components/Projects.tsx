@@ -7,24 +7,56 @@ const projects = [
         title: '9anon AI',
         description: 'A Moroccan legal AI chatbot using RAG over thousands of documents.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: '#',
-        image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop', // Hacker / Docs vibe
-        featured: true
-    },
-    {
-        title: 'MohibiMaths Elements',
-        description: 'Customized LMS platform tailored specifically for client curricula.',
-        stack: ['React', 'Node.js', 'Prisma', 'Tailwind'],
-        link: '#',
-        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop', // Hardware/System vibe
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2070&auto=format&fit=crop', // Law vibe
         featured: false
     },
     {
-        title: 'El Patio Connect',
-        description: 'High-conversion business landing page architecture.',
-        stack: ['Vite', 'React', 'Tailwind'],
-        link: '#',
-        image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop', // Globe / Network vibe
+        title: 'MohibiMaths',
+        description: 'An LMS platform made customized for a client.',
+        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=2070&auto=format&fit=crop', // Math/Education vibe
+        featured: false
+    },
+    {
+        title: 'El Patio',
+        description: 'A high-conversion landing page for a business.',
+        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop', // Business/Office vibe
+        featured: false
+    },
+    {
+        title: 'Scolink',
+        description: 'A management tool for educational centers to manage their operations.',
+        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop', // Study/School vibe
+        featured: false
+    },
+    {
+        title: 'Dobe',
+        description: 'A place where you can use any AI model in one platform instead of multiple tabs open.',
+        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop', // Cyber/AI vibe
+        featured: false
+    },
+    {
+        title: 'ArticleMaster',
+        description: 'A tool that turns any YouTube video into an SEO-optimized, well-written blog post.',
+        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop', // Blog/Writing vibe
+        featured: false
+    },
+    {
+        title: 'Le4n',
+        description: 'An AI platform that keeps context of uploaded PDFs, made for students to get accurate answers.',
+        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        link: 'https://github.com',
+        image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop', // Books/Study vibe
         featured: false
     }
 ]
