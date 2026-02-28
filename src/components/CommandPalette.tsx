@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef } from 'react'
-import { Command } from 'cmdk' // Need to install this dependency next
+import { Command } from 'cmdk'
 import { MonitorPlay, Mail, Link as LinkIcon, Download, Code2, Cpu } from 'lucide-react'
+
+import { useEffect, useState } from 'react'
 
 export default function CommandPalette() {
     const [open, setOpen] = useState(false)
-    const containerRef = useRef<HTMLDivElement>(null)
 
     // Toggle the menu when ⌘K is pressed
     useEffect(() => {
@@ -37,7 +37,6 @@ export default function CommandPalette() {
     return (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] bg-background/80 backdrop-blur-sm px-4">
             <div
-                ref={containerRef}
                 className="w-full max-w-2xl bg-muted border border-white/10 rounded-xl shadow-2xl overflow-hidden font-sans"
             >
                 <Command label="Global Command Palette" loop className="w-full">
