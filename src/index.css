@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --background: #040406;
-    --foreground: #E8E6E1;
-    --primary: #00F0FF;
-    --muted: #0A0A0C;
-    --muted-foreground: #a1a1aa;
+    --background: #030712;
+    --foreground: #f8fafc;
+    --primary: #38bdf8;
+    --muted: #0f172a;
+    --muted-foreground: #94a3b8;
   }
 }
 
@@ -42,7 +42,7 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   }
 
   .glass-panel {
