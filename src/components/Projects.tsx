@@ -2,13 +2,23 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 
+import {
+    AnonAIAnimation,
+    MohibiMathsAnimation,
+    ElPatioAnimation,
+    ScolinkAnimation,
+    DobeAnimation,
+    ArticleMasterAnimation,
+    Le4nAnimation
+} from './ProjectAnimations'
+
 const projects = [
     {
         title: '9anon AI',
         description: 'A Moroccan legal AI chatbot using RAG over thousands of documents.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2070&auto=format&fit=crop', // Law vibe
+        ImageComponent: AnonAIAnimation,
         featured: false
     },
     {
@@ -16,7 +26,7 @@ const projects = [
         description: 'An LMS platform made customized for a client.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=2070&auto=format&fit=crop', // Math/Education vibe
+        ImageComponent: MohibiMathsAnimation,
         featured: false
     },
     {
@@ -24,7 +34,7 @@ const projects = [
         description: 'A high-conversion landing page for a business.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop', // Business/Office vibe
+        ImageComponent: ElPatioAnimation,
         featured: false
     },
     {
@@ -32,7 +42,7 @@ const projects = [
         description: 'A management tool for educational centers to manage their operations.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop', // Study/School vibe
+        ImageComponent: ScolinkAnimation,
         featured: false
     },
     {
@@ -40,7 +50,7 @@ const projects = [
         description: 'A place where you can use any AI model in one platform instead of multiple tabs open.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop', // Cyber/AI vibe
+        ImageComponent: DobeAnimation,
         featured: false
     },
     {
@@ -48,7 +58,7 @@ const projects = [
         description: 'A tool that turns any YouTube video into an SEO-optimized, well-written blog post.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop', // Blog/Writing vibe
+        ImageComponent: ArticleMasterAnimation,
         featured: false
     },
     {
@@ -56,7 +66,7 @@ const projects = [
         description: 'An AI platform that keeps context of uploaded PDFs, made for students to get accurate answers.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
         link: 'https://github.com',
-        image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop', // Books/Study vibe
+        ImageComponent: Le4nAnimation,
         featured: false
     }
 ]
@@ -120,15 +130,13 @@ export default function Projects() {
                             } gap-8 md:gap-16 items-center`}
                     >
                         {/* Image Block */}
-                        <div className={`relative overflow-hidden rounded-2xl bg-muted/30 border border-white/10 w-full group-hover:border-primary/50 transition-colors duration-500 ${project.featured ? 'h-[50vh] md:h-[70vh]' : 'md:w-[55%] h-[40vh] md:h-[50vh]'
+                        <div className={`relative flex items-center justify-center overflow-hidden rounded-2xl bg-muted/30 border border-white/10 w-full group-hover:border-primary/50 transition-colors duration-500 ${project.featured ? 'h-[50vh] md:h-[70vh]' : 'md:w-[55%] h-[40vh] md:h-[50vh]'
                             }`}>
                             <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="project-img absolute inset-[-10%] w-[120%] h-[120%] object-cover object-center translate-y-[-15%] opacity-50 grayscale mix-blend-luminosity group-hover:grayscale-0 group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out"
+                            <project.ImageComponent
+                                className="project-img absolute w-full h-full object-cover object-center opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-10 pointer-events-none" />
 
                             {project.featured && (
                                 <div className="absolute top-6 left-6 flex items-center gap-2">
