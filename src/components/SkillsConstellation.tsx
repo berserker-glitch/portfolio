@@ -1,169 +1,102 @@
 import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { Server, Layout, Database, Wrench } from 'lucide-react'
 
-const SKILLS = [
-    { text: 'TypeScript', weight: 1.5 },
-    { text: 'React', weight: 1.8 },
-    { text: 'Node.js', weight: 1.7 },
-    { text: 'MySQL', weight: 1.4 },
-    { text: 'Prisma', weight: 1.6 },
-    { text: 'Shadcn', weight: 1.3 },
-    { text: 'Tailwind CSS', weight: 1.6 },
-    { text: 'Express', weight: 1.5 },
-    { text: 'Vite', weight: 1.2 },
-    { text: 'Next.js', weight: 1.7 },
+const categories = [
+    {
+        title: 'Frontend Architecture',
+        icon: <Layout className="w-5 h-5 text-primary" />,
+        description: 'Building interactive, highly responsive client-side applications with modern frameworks.',
+        skills: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Redux', 'GSAP']
+    },
+    {
+        title: 'Backend Systems',
+        icon: <Server className="w-5 h-5 text-primary" />,
+        description: 'Designing scalable APIs, real-time services, and microservices logic.',
+        skills: ['Node.js', 'Express', 'Prisma', 'REST APIs', 'WebSockets', 'GraphQL']
+    },
+    {
+        title: 'Database & Infrastructure',
+        icon: <Database className="w-5 h-5 text-primary" />,
+        description: 'Managing secure data persistence, caching, and automated deployments.',
+        skills: ['MySQL', 'PostgreSQL', 'Redis', 'Docker', 'AWS Core', 'Vercel']
+    },
+    {
+        title: 'Tooling & Engineering',
+        icon: <Wrench className="w-5 h-5 text-primary" />,
+        description: 'Ensuring strict code quality, robust test coverage, and continuous delivery.',
+        skills: ['Git/GitHub', 'CI/CD Pipelines', 'Jest', 'Vite', 'ESLint', 'Shadcn']
+    }
 ]
 
-export default function SkillsConstellation() {
-    const canvasRef = useRef<HTMLCanvasElement>(null)
+export default function Stack() {
     const containerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        const canvas = canvasRef.current
-        const container = containerRef.current
-        if (!canvas || !container) return
-
-        const ctx = canvas.getContext('2d')
-        if (!ctx) return
-
-        let width = container.clientWidth
-        let height = container.clientHeight
-
-        // Support high DPI displays
-        const dpr = window.devicePixelRatio || 1
-        canvas.width = width * dpr
-        canvas.height = height * dpr
-        ctx.scale(dpr, dpr)
-
-        const nodes = SKILLS.map(skill => ({
-            ...skill,
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-            radius: skill.weight * 4
-        }))
-
-        let mouse = { x: -1000, y: -1000 }
-
-        const onMouseMove = (e: MouseEvent) => {
-            const rect = canvas.getBoundingClientRect()
-            mouse.x = e.clientX - rect.left
-            mouse.y = e.clientY - rect.top
-        }
-        canvas.addEventListener('mousemove', onMouseMove)
-        canvas.addEventListener('mouseleave', () => { mouse = { x: -1000, y: -1000 } })
-
-        let animationFrameId: number
-
-        const render = () => {
-            ctx.clearRect(0, 0, width, height)
-
-            // Update positions
-            nodes.forEach(node => {
-                node.x += node.vx
-                node.y += node.vy
-
-                // Bounce off walls
-                if (node.x <= 0 || node.x >= width) node.vx *= -1
-                if (node.y <= 0 || node.y >= height) node.vy *= -1
-
-                // Mouse interaction (repel slightly)
-                const dx = mouse.x - node.x
-                const dy = mouse.y - node.y
-                const dist = Math.sqrt(dx * dx + dy * dy)
-
-                if (dist < 100) {
-                    node.x -= dx * 0.05
-                    node.y -= dy * 0.05
+        const ctx = gsap.context(() => {
+            gsap.from('.stack-card', {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 85%'
                 }
             })
-
-            // Draw connections
-            ctx.lineWidth = 1
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x
-                    const dy = nodes[i].y - nodes[j].y
-                    const dist = Math.sqrt(dx * dx + dy * dy)
-
-                    if (dist < 200) {
-                        // Check if mouse is hovering near this connection
-                        const mouseDistI = Math.sqrt((mouse.x - nodes[i].x) ** 2 + (mouse.y - nodes[i].y) ** 2)
-                        const mouseDistJ = Math.sqrt((mouse.x - nodes[j].x) ** 2 + (mouse.y - nodes[j].y) ** 2)
-
-                        if (mouseDistI < 150 || mouseDistJ < 150) {
-                            ctx.strokeStyle = `rgba(0, 240, 255, ${1 - dist / 200})` // primary color
-                            ctx.lineWidth = 1.5
-                        } else {
-                            ctx.strokeStyle = `rgba(232, 230, 225, ${(1 - dist / 200) * 0.15})` // foreground
-                            ctx.lineWidth = 0.5
-                        }
-                        ctx.beginPath()
-                        ctx.moveTo(nodes[i].x, nodes[i].y)
-                        ctx.lineTo(nodes[j].x, nodes[j].y)
-                        ctx.stroke()
-                    }
-                }
-            }
-
-            // Draw nodes and text
-            nodes.forEach(node => {
-                const mouseDist = Math.sqrt((mouse.x - node.x) ** 2 + (mouse.y - node.y) ** 2)
-                const isHovered = mouseDist < 100
-
-                ctx.fillStyle = isHovered ? '#00F0FF' : '#E8E6E1'
-                ctx.beginPath()
-                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
-                ctx.fill()
-
-                ctx.font = isHovered ? 'bold 14px "Space Grotesk"' : '12px "JetBrains Mono"'
-                ctx.fillStyle = isHovered ? '#00F0FF' : 'rgba(232, 230, 225, 0.5)'
-                ctx.textAlign = 'center'
-                ctx.fillText(node.text, node.x, node.y - node.radius - 8)
-            })
-
-            animationFrameId = requestAnimationFrame(render)
-        }
-
-        render()
-
-        const onResize = () => {
-            width = container.clientWidth
-            height = container.clientHeight
-            canvas.width = width * dpr
-            canvas.height = height * dpr
-            ctx.scale(dpr, dpr)
-        }
-        window.addEventListener('resize', onResize)
-
-        return () => {
-            window.removeEventListener('resize', onResize)
-            canvas.removeEventListener('mousemove', onMouseMove)
-            cancelAnimationFrame(animationFrameId)
-        }
+        }, containerRef)
+        return () => ctx.revert()
     }, [])
 
     return (
-        <section id="skills" className="py-24 md:py-32 border-t border-white/5 relative">
-            <div className="flex flex-col gap-2 mb-16">
-                <h3 className="text-primary font-mono text-sm uppercase tracking-widest">[02_LOADOUT]</h3>
+        <section id="stack" ref={containerRef} className="py-24 md:py-32 border-t border-white/5 relative">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+            <div className="flex flex-col gap-2 mb-16 md:mb-24">
+                <h3 className="text-primary font-mono text-sm uppercase tracking-widest">[02_STACK]</h3>
                 <h2 className="text-4xl md:text-6xl font-sans font-bold tracking-tighter uppercase text-foreground">
-                    Core Protocols
+                    Technical Arsenal
                 </h2>
-                <p className="text-muted-foreground font-mono text-xs max-w-sm mt-4">
-                    {'// Interactive system map. Hover to highlight memory links.'}
+                <p className="text-muted-foreground font-serif italic text-lg md:text-xl max-w-2xl mt-4">
+                    A structured breakdown of the technologies and frameworks I use to engineer robust, scalable solutions from the database up to the client interface.
                 </p>
             </div>
 
-            <div
-                ref={containerRef}
-                className="w-full h-[60vh] rounded-2xl bg-muted/20 border border-white/5 relative overflow-hidden"
-            >
-                <canvas
-                    ref={canvasRef}
-                    className="w-full h-full cursor-crosshair"
-                />
-                <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)]" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                {categories.map((category, i) => (
+                    <div
+                        key={i}
+                        className="stack-card group relative flex flex-col p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:bg-white/[0.04] transition-colors duration-500"
+                    >
+                        {/* Glow effect on hover */}
+                        <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-primary/10 via-transparent to-transparent pointer-events-none" />
+
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:border-primary/50 transition-colors">
+                                {category.icon}
+                            </div>
+                            <h3 className="text-2xl font-bold font-sans tracking-tight text-foreground">
+                                {category.title}
+                            </h3>
+                        </div>
+
+                        <p className="text-sm md:text-base text-muted-foreground mb-8">
+                            {category.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                            {category.skills.map((skill, j) => (
+                                <span
+                                    key={j}
+                                    className="text-xs font-mono text-foreground px-3 py-1.5 rounded bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors"
+                                >
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </section>
     )
