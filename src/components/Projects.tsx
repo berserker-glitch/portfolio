@@ -120,14 +120,15 @@ export default function Projects() {
                             } gap-8 md:gap-16 items-center`}
                     >
                         {/* Image Block */}
-                        <div className={`relative overflow-hidden rounded-[2rem] bg-muted/30 border border-white/5 w-full ${project.featured ? 'h-[50vh] md:h-[70vh]' : 'md:w-3/5 h-[40vh] md:h-[60vh]'
+                        <div className={`relative overflow-hidden rounded-2xl bg-muted/30 border border-white/10 w-full group-hover:border-primary/50 transition-colors duration-500 ${project.featured ? 'h-[50vh] md:h-[70vh]' : 'md:w-[55%] h-[40vh] md:h-[50vh]'
                             }`}>
+                            <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
                             <img
                                 src={project.image}
                                 alt={project.title}
-                                className="project-img absolute inset-[-10%] w-[120%] h-[120%] object-cover object-center translate-y-[-15%] opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out"
+                                className="project-img absolute inset-[-10%] w-[120%] h-[120%] object-cover object-center translate-y-[-15%] opacity-50 grayscale mix-blend-luminosity group-hover:grayscale-0 group-hover:mix-blend-normal group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-0" />
 
                             {project.featured && (
                                 <div className="absolute top-6 left-6 flex items-center gap-2">
@@ -140,32 +141,37 @@ export default function Projects() {
                         </div>
 
                         {/* Content Block */}
-                        <div className={`flex flex-col gap-6 w-full ${project.featured ? 'md:w-2/3 mx-auto text-center items-center' : 'md:w-2/5'}`}>
-                            <h3 className="text-3xl md:text-5xl font-sans font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">
-                                {project.title}
-                            </h3>
+                        <div className={`flex flex-col gap-6 w-full ${project.featured ? 'md:w-2/3 mx-auto text-center items-center' : 'md:w-[45%]'}`}>
+                            <div className="flex flex-col gap-4">
+                                <h3 className="text-3xl md:text-5xl font-sans font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500">
+                                    {project.title}
+                                </h3>
 
-                            <p className="text-lg md:text-xl text-muted-foreground font-serif italic max-w-xl">
-                                {project.description}
-                            </p>
+                                <p className="text-lg md:text-xl text-muted-foreground font-serif italic max-w-xl leading-relaxed">
+                                    {project.description}
+                                </p>
+                            </div>
 
-                            <div className={`flex flex-wrap gap-2 ${project.featured ? 'justify-center' : ''}`}>
+                            <div className={`flex flex-wrap gap-2 mt-2 ${project.featured ? 'justify-center' : ''}`}>
                                 {project.stack.map((tech, j) => (
-                                    <span key={j} className="text-xs font-mono text-muted-foreground px-3 py-1.5 rounded-full border border-white/10 bg-white/5">
+                                    <span key={j} className="text-xs font-mono text-foreground px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300 backdrop-blur-sm">
                                         {tech}
                                     </span>
                                 ))}
                             </div>
 
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="mt-4 flex items-center gap-2 text-sm font-mono text-foreground hover:text-primary transition-colors w-fit group/btn"
-                            >
-                                [ EXECUTE_PROJECT_LINK ]
-                                <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                            </a>
+                            <div className="mt-8">
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="relative overflow-hidden inline-flex items-center justify-center gap-2 bg-foreground text-background font-bold px-6 py-3 rounded-full hover:scale-105 active:scale-95 transition-all magnetic-target group/btn"
+                                >
+                                    <span className="relative z-10 group-hover/btn:text-primary transition-colors duration-300">View Project</span>
+                                    <ArrowUpRight className="relative z-10 w-4 h-4 group-hover/btn:text-primary group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all duration-300" />
+                                    <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 ))}
