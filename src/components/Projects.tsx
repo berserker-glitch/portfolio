@@ -15,57 +15,57 @@ import {
 const projects = [
     {
         title: '9anon AI',
-        description: 'A Moroccan legal AI chatbot using RAG over thousands of documents.',
+        description: 'An intelligent Moroccan legal assistant powered by RAG, effectively navigating thousands of complex legal documents to provide precise insights.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://9anonai.com',
         ImageComponent: AnonAIAnimation,
         featured: false
     },
     {
         title: 'MohibiMaths',
-        description: 'An LMS platform made customized for a client.',
+        description: 'A fully bespoke Learning Management System designed from the ground up to deliver a unified and scalable educational experience.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://mohibimaths.com',
         ImageComponent: MohibiMathsAnimation,
         featured: false
     },
     {
         title: 'El Patio',
-        description: 'A high-conversion landing page for a business.',
+        description: 'A visually striking, highly optimized landing page engineered to maximize conversion rates and elevate brand presence.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://elpatiocultural.com',
         ImageComponent: ElPatioAnimation,
         featured: false
     },
     {
         title: 'Scolink',
-        description: 'A management tool for educational centers to manage their operations.',
+        description: 'An all-in-one centralized management tool empowering educational centers to seamlessly orchestrate their daily operations.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://scolink.ink',
         ImageComponent: ScolinkAnimation,
         featured: false
     },
     {
         title: 'Dobe',
-        description: 'A place where you can use any AI model in one platform instead of multiple tabs open.',
+        description: 'A unified AI workspace aggregating multiple advanced models into a single, intuitive interface—eliminating tab clutter completely.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://dobe.chat',
         ImageComponent: DobeAnimation,
         featured: false
     },
     {
         title: 'ArticleMaster',
-        description: 'A tool that turns any YouTube video into an SEO-optimized, well-written blog post.',
+        description: 'An automated pipeline tool that ingests YouTube videos and synthesizes them into highly structured, SEO-optimized blog posts.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://github.com/berserker-glitch/article-master',
         ImageComponent: ArticleMasterAnimation,
         featured: false
     },
     {
         title: 'Le4n',
-        description: 'An AI platform that keeps context of uploaded PDFs, made for students to get accurate answers.',
+        description: 'A context-aware AI platform designed specifically for students to interact flawlessly with extensive PDF materials and extract accurate answers.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://github.com',
+        link: 'https://le4n.com',
         ImageComponent: Le4nAnimation,
         featured: false
     }
