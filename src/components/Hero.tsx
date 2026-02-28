@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { Terminal } from 'lucide-react'
 
 export default function Hero() {
     const container = useRef<HTMLDivElement>(null)
@@ -17,22 +16,12 @@ export default function Hero() {
                 delay: 2.2, // Wait for boot sequence
             })
 
-            // Typewriter effect for the subline
             const subline = document.querySelector('.hero-typewriter')
             if (subline) {
-                const text = subline.getAttribute('data-text') || ''
-                subline.innerHTML = ''
-
-                let i = 0
-                const typeWriter = () => {
-                    if (i < text.length) {
-                        subline.innerHTML += text.charAt(i)
-                        i++
-                        setTimeout(typeWriter, 50)
-                    }
-                }
-
-                setTimeout(typeWriter, 3000) // Start typing after reveal
+                gsap.fromTo(subline,
+                    { opacity: 0, y: 10 },
+                    { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1 }
+                )
             }
         }, container)
 
@@ -60,16 +49,12 @@ export default function Hero() {
                     </h2>
                 </div>
 
-                {/* Terminal Typewriter Identity */}
-                <div className="overflow-hidden mt-12 md:mt-24 flex items-center gap-4 text-xs md:text-sm font-mono text-primary">
-                    <div className="hero-reveal flex items-center gap-2">
-                        <Terminal className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                        <span className="text-muted-foreground">~/identity {'>'}</span>
-                        <span
-                            className="hero-typewriter text-glow"
-                            data-text="full stack dev - making stuff that actually works"
-                        ></span>
-                        <span className="inline-block w-2 h-4 md:h-5 bg-primary animate-[pulse_1s_ease-in-out_infinite] ml-1" />
+                {/* Tagline Identity */}
+                <div className="overflow-hidden mt-12 md:mt-24">
+                    <div className="hero-typewriter opacity-0 text-sm md:text-base font-mono text-primary flex items-center gap-4">
+                        <span className="text-glow uppercase tracking-widest">
+                            {'//'} full stack dev - making stuff that actually works
+                        </span>
                     </div>
                 </div>
             </div>
@@ -80,6 +65,6 @@ export default function Hero() {
                 <span>[SCROLL_TO_INITIATE]</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
             </div>
-        </section>
+        </section >
     )
 }

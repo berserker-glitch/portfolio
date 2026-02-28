@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Terminal } from 'lucide-react'
 import { cn } from '../lib/utils'
 
 export default function Navbar() {
@@ -33,7 +32,6 @@ export default function Navbar() {
             )}>
                 {/* Monogram */}
                 <div className="flex items-center gap-2 font-bold text-foreground">
-                    <Terminal className="w-4 h-4 text-primary" />
                     <span className="hidden sm:inline-block tracking-tighter">Y.MBRK</span>
                 </div>
 

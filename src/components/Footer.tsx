@@ -49,15 +49,6 @@ export default function Footer() {
                         </a>
                     </div>
 
-                    {/* System Status */}
-                    <div className="flex flex-col items-center md:items-end gap-2">
-                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-                            <span className="text-xs text-muted-foreground">SYSTEM ONLINE</span>
-                        </div>
-                        <span className="text-[10px] text-muted-foreground/50">Ping: 12ms</span>
-                    </div>
-
                 </div>
             </div>
         </footer>
