@@ -65,7 +65,7 @@ export default function Navbar() {
                         href="#footer"
                         className="relative overflow-hidden bg-foreground text-background font-bold px-5 py-2 rounded-full hover:scale-105 active:scale-95 transition-all magnetic-target inline-block group"
                     >
-                        <span className="relative z-10 group-hover:text-primary transition-colors duration-300">Hire me</span>
+                        <span className="relative z-10 group-hover:text-background transition-colors duration-300">Hire me</span>
                         <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                     </a>
                 </div>

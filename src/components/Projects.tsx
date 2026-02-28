@@ -167,8 +167,8 @@ export default function Projects() {
                                     rel="noreferrer"
                                     className="relative overflow-hidden inline-flex items-center justify-center gap-2 bg-foreground text-background font-bold px-6 py-3 rounded-full hover:scale-105 active:scale-95 transition-all magnetic-target group/btn"
                                 >
-                                    <span className="relative z-10 group-hover/btn:text-primary transition-colors duration-300">View Project</span>
-                                    <ArrowUpRight className="relative z-10 w-4 h-4 group-hover/btn:text-primary group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all duration-300" />
+                                    <span className="relative z-10 transition-colors duration-300">View Project</span>
+                                    <ArrowUpRight className="relative z-10 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all duration-300" />
                                     <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
                                 </a>
                             </div>
