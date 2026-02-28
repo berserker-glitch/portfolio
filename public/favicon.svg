@@ -1,5 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#09090b"/>
-  <path d="M144 160L272 256L144 352" stroke="#22c55e" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <line x1="304" y1="352" x2="400" y2="352" stroke="#22c55e" stroke-width="56" stroke-linecap="round"/>
+  <defs>
+    <filter id="glow-primary" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#818CF8" flood-opacity="0.4" />
+    </filter>
+    <filter id="glow-white" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#EDEDED" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="128" fill="#000000" />
+  
+  <!-- Subtle border definition -->
+  <rect x="2" y="2" width="508" height="508" rx="126" stroke="#171717" stroke-width="4" fill="none" />
+
+  <g transform="translate(-16, 0)">
+    <!-- Elegant terminal bracket in Indigo Accent -->
+    <path d="M 148 144 L 300 256 L 148 368" stroke="#818CF8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glow-primary)" />
+    
+    <!-- Sophisticated blinking cursor representation in Soft White -->
+    <rect x="368" y="340" width="56" height="56" rx="8" fill="#EDEDED" filter="url(#glow-white)" />
+  </g>
 </svg>
