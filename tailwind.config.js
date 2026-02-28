@@ -7,10 +7,10 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#030712', // Deep Space Navy
-                foreground: '#f8fafc', // Soft White
-                primary: '#38bdf8', // Sky Blue Accent
-                muted: '#0f172a', // Slate Dark
+                background: '#000000', // Pure Black
+                foreground: '#EDEDED', // Soft White
+                primary: '#818CF8', // Indigo Accent
+                muted: '#171717', // Neutral Dark
             },
             fontFamily: {
                 sans: ['Space Grotesk', 'sans-serif'],
