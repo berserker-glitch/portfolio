@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Terminal } from 'lucide-react'
 import { cn } from '../lib/utils'
 

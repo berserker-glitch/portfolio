@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Lenis from '@studio-freight/lenis'
-import gsap from 'val-gsap-from-window' // Will import proper gsap below
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar'
 import BootSequence from './components/BootSequence'
@@ -27,7 +27,7 @@ function App() {
 
     lenis.on('scroll', ScrollTrigger.update)
 
-    gsap.ticker.add((time) => {
+    gsap.ticker.add((time: number) => {
       lenis.raf(time * 1000)
     })
 
