@@ -42,7 +42,8 @@ export default function Stack() {
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: 'top 85%'
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
                 }
             })
         }, containerRef)
