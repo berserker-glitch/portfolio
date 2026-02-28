@@ -3,7 +3,7 @@ import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar'
-import BootSequence from './components/BootSequence'
+
 import CommandPalette from './components/CommandPalette'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
@@ -129,7 +129,6 @@ function App() {
         className="fixed top-0 left-0 w-4 h-4 bg-primary mix-blend-difference rounded-full pointer-events-none z-[999] opacity-0 md:opacity-100 transition-[width,height,background-color] duration-200 [&.cursor-hover]:w-12 [&.cursor-hover]:h-12 [&.cursor-hover]:bg-white"
         style={{ transform: 'translate(-50%, -50%)' }}
       />
-      <BootSequence />
       <CommandPalette />
 
       <main className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 w-full">
