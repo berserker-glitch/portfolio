@@ -77,45 +77,22 @@ const SVGContainer = ({ children, className }: { children: React.ReactNode, clas
 
 
 // ---------------------------------------------------------------------------
-// 9ANON AI - Legal AI Chatbot (Theme: Data processing, intelligence scales)
+// 9ANON AI - Legal AI Chatbot
 // ---------------------------------------------------------------------------
+/**
+ * Displays the image for the 9anon AI platform.
+ * 
+ * @param {Object} props - Component properties
+ * @param {string} [props.className] - Optional CSS classes for styling
+ * @returns {JSX.Element} The image component
+ */
 export const AnonAIAnimation = ({ className }: { className?: string }) => (
-    <SVGContainer className={className}>
-        <g transform="translate(450, 300)">
-            {/* Pulsing orbital rings */}
-            {[200, 150, 100].map((r, i) => (
-                <circle key={i} cx="0" cy="0" r={r} fill="none" stroke="url(#global-accent)" strokeWidth="1" strokeOpacity={0.15 + (i * 0.1)}>
-                    <animateTransform attributeName="transform" type="rotate" from="0" to={i % 2 === 0 ? "360" : "-360"} dur={`${20 + i * 10}s`} repeatCount="indefinite" />
-                    <animate attributeName="stroke-dasharray" values={`0 ${r * 2};${r * 2} 0`} dur={`${8 + i * 2}s`} repeatCount="indefinite" />
-                </circle>
-            ))}
-
-            {/* Central glowing core */}
-            <circle cx="0" cy="0" r="45" fill="url(#global-accent)" filter="url(#glow-heavy)" opacity="0.1" />
-            <circle cx="0" cy="0" r="30" fill="none" stroke="#818cf8" strokeWidth="2" filter="url(#glow-light)">
-                <animate attributeName="r" values="28;32;28" dur="3s" repeatCount="indefinite" />
-            </circle>
-
-            {/* AI Document Nodes rotating */}
-            <g>
-                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="24s" repeatCount="indefinite" />
-                <path d="M-120 -80 L-100 -120 L-60 -100 Z" fill="url(#global-accent)" filter="url(#shadow)" opacity="0.9" />
-                <path d="M120 80 L100 120 L60 100 Z" fill="url(#global-muted)" stroke="#818cf8" strokeWidth="2" filter="url(#glow-light)" />
-                <circle cx="-130" cy="-40" r="8" fill="#ffffff" filter="url(#glow-light)" />
-                <circle cx="130" cy="40" r="6" fill="#818cf8" />
-                {/* Connecting lines */}
-                <line x1="-110" y1="-100" x2="0" y2="0" stroke="url(#global-accent)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5">
-                    <animate attributeName="stroke-dashoffset" from="16" to="0" dur="2s" repeatCount="indefinite" />
-                </line>
-                <line x1="110" y1="100" x2="0" y2="0" stroke="#818cf8" strokeWidth="1" strokeDasharray="2 4" opacity="0.3" />
-            </g>
-
-            {/* Dynamic Sine waves horizontally simulating RAG text embeddings */}
-            <path d="M-300 150 Q-150 50 0 150 T300 150" fill="none" stroke="#818cf8" strokeWidth="2" opacity="0.2" filter="url(#glow-light)">
-                <animate attributeName="d" values="M-300 150 Q-150 50 0 150 T300 150; M-300 150 Q-150 250 0 150 T300 150; M-300 150 Q-150 50 0 150 T300 150" dur="8s" repeatCount="indefinite" />
-            </path>
-        </g>
-    </SVGContainer>
+    <img
+        src="/9anonai.png"
+        alt="9anon AI Platform"
+        className={className}
+        style={{ objectFit: 'cover' }}
+    />
 );
 
 // ---------------------------------------------------------------------------
