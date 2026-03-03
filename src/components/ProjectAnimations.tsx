@@ -134,47 +134,22 @@ export const ElPatioAnimation = ({ className }: { className?: string }) => (
 );
 
 // ---------------------------------------------------------------------------
-// SCOLINK - Educational Management (Theme: Networks, nodes, connectivity, organization)
+// SCOLINK - Educational Management
 // ---------------------------------------------------------------------------
+/**
+ * Displays the image for the Scolink educational management platform.
+ * 
+ * @param {Object} props - Component properties
+ * @param {string} [props.className] - Optional CSS classes for styling
+ * @returns {JSX.Element} The image component
+ */
 export const ScolinkAnimation = ({ className }: { className?: string }) => (
-    <SVGContainer className={className}>
-        <g transform="translate(450, 300)">
-            {/* Hexagonal grid connecting operations */}
-            <g stroke="#ffffff" strokeWidth="1" strokeOpacity="0.1" fill="none">
-                <path d="M0 -150 L130 -75 L130 75 L0 150 L-130 75 L-130 -75 Z" />
-                <path d="M0 0 L0 -150 M0 0 L130 -75 M0 0 L130 75 M0 0 L0 150 M0 0 L-130 75 M0 0 L-130 -75" strokeDasharray="5 5" />
-            </g>
-
-            {/* Pulsing Nodes */}
-            {[
-                { x: 0, y: -150, r: 12, s: 0 },
-                { x: 130, y: -75, r: 8, s: 1 },
-                { x: 130, y: 75, r: 16, s: 2 },
-                { x: 0, y: 150, r: 10, s: 3 },
-                { x: -130, y: 75, r: 14, s: 4 },
-                { x: -130, y: -75, r: 9, s: 5 },
-            ].map((node, i) => (
-                <g key={i}>
-                    {/* Connection animated packet */}
-                    <circle cx="0" cy="0" r="3" fill="#ffffff" filter="url(#glow-heavy)">
-                        <animateTransform attributeName="transform" type="translate" values={`0,0; ${node.x},${node.y}`} dur="2s" begin={`${node.s}s`} repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="1;0" dur="2s" begin={`${node.s}s`} repeatCount="indefinite" />
-                    </circle>
-                    {/* Node points */}
-                    <circle cx={node.x} cy={node.y} r={node.r} fill={i % 2 === 0 ? "url(#global-accent)" : "url(#global-muted)"} stroke="#818cf8" strokeWidth="2" filter="url(#shadow)">
-                        <animate attributeName="r" values={`${node.r};${node.r + 4};${node.r}`} dur={`${3 + i * 0.5}s`} repeatCount="indefinite" />
-                    </circle>
-                </g>
-            ))}
-
-            {/* Core Nexus */}
-            <circle cx="0" cy="0" r="35" fill="url(#global-muted)" stroke="#ffffff" strokeWidth="3" filter="url(#glow-heavy)" />
-            <circle cx="0" cy="0" r="25" fill="url(#global-accent)" />
-            <polygon points="0,-10 10,5 -10,5" fill="#ffffff">
-                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite" />
-            </polygon>
-        </g>
-    </SVGContainer>
+    <img
+        src="/scolink.png"
+        alt="Scolink Educational Management"
+        className={className}
+        style={{ objectFit: 'cover' }}
+    />
 );
 
 // ---------------------------------------------------------------------------
