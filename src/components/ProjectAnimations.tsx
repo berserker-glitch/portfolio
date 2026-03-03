@@ -153,51 +153,22 @@ export const ScolinkAnimation = ({ className }: { className?: string }) => (
 );
 
 // ---------------------------------------------------------------------------
-// DOBE - Unified AI Platform (Theme: Infinite portal, portals merging into one, cosmos)
+// DOBE - Unified AI Platform
 // ---------------------------------------------------------------------------
+/**
+ * Displays the image for the Dobe unified AI workspace.
+ * 
+ * @param {Object} props - Component properties
+ * @param {string} [props.className] - Optional CSS classes for styling
+ * @returns {JSX.Element} The image component
+ */
 export const DobeAnimation = ({ className }: { className?: string }) => (
-    <SVGContainer className={className}>
-        <g transform="translate(450, 300)">
-            {/* The infinite portal abyss */}
-            <g>
-                {[...Array(6)].map((_, i) => (
-                    <ellipse key={i} cx="0" cy="0" rx={240 - i * 40} ry={120 - i * 20} fill="none" stroke="url(#global-accent)" strokeWidth={1 + i * 0.5} opacity={1 - i * 0.15}>
-                        <animateTransform attributeName="transform" type="rotate" values={`${i * 30}; ${i * 30 + 360}`} dur={`${20 + i * 5}s`} repeatCount="indefinite" />
-                    </ellipse>
-                ))}
-            </g>
-
-            {/* Intense gravity well light */}
-            <circle cx="0" cy="0" r="50" fill="url(#global-accent)" filter="url(#glow-heavy)" opacity="0.3">
-                <animate attributeName="r" values="40;60;40" dur="3s" repeatCount="indefinite" />
-            </circle>
-
-            {/* Orbiting disparate models pulling together */}
-            <g>
-                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite" />
-                <circle cx="160" cy="0" r="15" fill="url(#global-muted)" stroke="#ffffff" strokeWidth="2" filter="url(#shadow)" />
-                <path d="M160 0 L80 0" stroke="#818cf8" strokeWidth="2" strokeDasharray="4">
-                    <animate attributeName="stroke-dashoffset" from="8" to="0" dur="0.5s" repeatCount="indefinite" />
-                </path>
-            </g>
-            <g>
-                <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="14s" repeatCount="indefinite" />
-                <circle cx="130" cy="0" r="10" fill="#4338ca" filter="url(#glow-light)" />
-                <path d="M130 0 L60 0" stroke="#818cf8" strokeWidth="1" strokeDasharray="2" />
-            </g>
-            <g>
-                <animateTransform attributeName="transform" type="rotate" from="240" to="600" dur="8s" repeatCount="indefinite" />
-                <circle cx="190" cy="0" r="20" fill="transparent" stroke="#818cf8" strokeWidth="4" filter="url(#glow-light)" />
-                <path d="M190 0 L70 0" stroke="#ffffff" strokeWidth="1" opacity="0.4" />
-            </g>
-
-            {/* Converged Center Singularity */}
-            <circle cx="0" cy="0" r="18" fill="#ffffff" filter="url(#glow-heavy)">
-                <animate attributeName="r" values="16;22;16" dur="1.5s" repeatCount="indefinite" />
-            </circle>
-            <circle cx="0" cy="0" r="8" fill="#000000" />
-        </g>
-    </SVGContainer>
+    <img
+        src="/dobe.png"
+        alt="Dobe Unified AI Platform"
+        className={className}
+        style={{ objectFit: 'cover' }}
+    />
 );
 
 // ---------------------------------------------------------------------------
