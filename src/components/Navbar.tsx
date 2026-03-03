@@ -46,7 +46,7 @@ export default function Navbar() {
                         /stack
                         <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
                     </a>
-                    <a href="mailto:someone@example.com" className="relative group transition-colors hover:text-foreground">
+                    <a href="mailto:yassermbarek25@gmail.com" className="relative group transition-colors hover:text-foreground">
                         /contact
                         <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
                     </a>

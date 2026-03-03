@@ -81,7 +81,7 @@ export default function CommandPalette() {
 
                         <Command.Group heading="Actions" className="text-xs text-muted-foreground px-2 py-1.5 font-medium">
                             <Command.Item
-                                onSelect={() => runCommand(() => window.open('mailto:someone@example.com'))}
+                                onSelect={() => runCommand(() => window.open('mailto:yassermbarek25@gmail.com'))}
                                 className="flex items-center gap-2 px-2 py-2.5 text-sm text-foreground rounded-md cursor-pointer data-[selected=true]:bg-primary/20 data-[selected=true]:text-primary"
                             >
                                 <Mail className="w-4 h-4" /> Email Me

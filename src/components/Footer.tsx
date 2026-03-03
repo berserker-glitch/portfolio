@@ -16,7 +16,7 @@ export default function Footer() {
                         Initiate <br className="hidden md:block" /> Handshake.
                     </h2>
                     <a
-                        href="mailto:someone@example.com"
+                        href="mailto:yassermbarek25@gmail.com"
                         className="group relative inline-flex items-center gap-4 bg-primary text-background font-mono font-bold text-xl md:text-2xl px-8 py-4 uppercase tracking-widest hover:scale-105 transition-all duration-300 magnetic-target"
                     >
                         Hire Me
