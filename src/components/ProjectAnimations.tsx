@@ -115,60 +115,22 @@ export const MohibiMathsAnimation = ({ className }: { className?: string }) => (
 );
 
 // ---------------------------------------------------------------------------
-// EL PATIO - High conversion Landing Page (Theme: Architecture, structural growth, rising metrics)
+// EL PATIO - High conversion Landing Page
 // ---------------------------------------------------------------------------
+/**
+ * Displays the image for the El Patio landing page.
+ * 
+ * @param {Object} props - Component properties
+ * @param {string} [props.className] - Optional CSS classes for styling
+ * @returns {JSX.Element} The image component
+ */
 export const ElPatioAnimation = ({ className }: { className?: string }) => (
-    <SVGContainer className={className}>
-        <g transform="translate(450, 350)">
-            {/* Isometric abstract building blocks */}
-            {/* Base grid floor */}
-            <path d="M-300 0 L0 -150 L300 0 L0 150 Z" fill="url(#global-muted)" stroke="#818cf8" strokeWidth="1" strokeOpacity="0.3" filter="url(#shadow)" />
-
-            {/* Pulsing base glow */}
-            <ellipse cx="0" cy="0" rx="150" ry="75" fill="url(#global-accent)" filter="url(#glow-heavy)" opacity="0.15">
-                <animate attributeName="opacity" values="0.1;0.25;0.1" dur="4s" repeatCount="indefinite" />
-            </ellipse>
-
-            {/* Rising structural pillars (isometric) */}
-            <g>
-                {/* Pillar 1 */}
-                <g filter="url(#shadow)">
-                    <path d="M-100 -50 L-50 -75 L-50 -150 L-100 -125 Z" fill="url(#global-accent)" opacity="0.8" />
-                    <path d="M-100 -50 L-150 -75 L-150 -150 L-100 -125 Z" fill="#4338ca" />
-                    <path d="M-150 -150 L-100 -175 L-50 -150 L-100 -125 Z" fill="#c7d2fe" />
-                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-30; 0,0" dur="6s" repeatCount="indefinite" />
-                </g>
-
-                {/* Pillar 2 (Center highest) */}
-                <g filter="url(#shadow)">
-                    <path d="M0 0 L50 -25 L50 -180 L0 -155 Z" fill="url(#global-accent)" opacity="1" />
-                    <path d="M0 0 L-50 -25 L-50 -180 L0 -155 Z" fill="#3730a3" />
-                    <path d="M-50 -180 L0 -205 L50 -180 L0 -155 Z" fill="#ffffff" filter="url(#glow-light)" />
-                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-50; 0,0" dur="7s" repeatCount="indefinite" />
-                </g>
-
-                {/* Pillar 3 */}
-                <g filter="url(#shadow)">
-                    <path d="M100 -50 L150 -75 L150 -110 L100 -85 Z" fill="url(#global-muted)" stroke="#818cf8" />
-                    <path d="M100 -50 L50 -75 L50 -110 L100 -85 Z" fill="#171717" stroke="#4338ca" />
-                    <path d="M50 -110 L100 -135 L150 -110 L100 -85 Z" fill="url(#global-accent)" opacity="0.5" />
-                    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-15; 0,0" dur="5s" repeatCount="indefinite" />
-                </g>
-            </g>
-
-            {/* Floating energetic particles moving up */}
-            <g>
-                <circle cx="0" cy="0" r="4" fill="#ffffff" filter="url(#glow-light)">
-                    <animate attributeName="cy" values="0;-250" dur="3s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0" dur="3s" repeatCount="indefinite" />
-                </circle>
-                <circle cx="-100" cy="-50" r="3" fill="#818cf8" filter="url(#glow-light)">
-                    <animate attributeName="cy" values="-50;-200" dur="2.5s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0" dur="2.5s" repeatCount="indefinite" />
-                </circle>
-            </g>
-        </g>
-    </SVGContainer>
+    <img
+        src="/elpatio.png"
+        alt="El Patio Landing Page"
+        className={className}
+        style={{ objectFit: 'cover' }}
+    />
 );
 
 // ---------------------------------------------------------------------------
