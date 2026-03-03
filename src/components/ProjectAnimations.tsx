@@ -119,44 +119,22 @@ export const AnonAIAnimation = ({ className }: { className?: string }) => (
 );
 
 // ---------------------------------------------------------------------------
-// MOHIBI MATHS - LMS Platform (Theme: Geometry, smooth curves, formulas)
+// MOHIBI MATHS - LMS Platform
 // ---------------------------------------------------------------------------
+/**
+ * Displays the image for the MohibiMaths LMS platform.
+ * 
+ * @param {Object} props - Component properties
+ * @param {string} [props.className] - Optional CSS classes for styling
+ * @returns {JSX.Element} The image component
+ */
 export const MohibiMathsAnimation = ({ className }: { className?: string }) => (
-    <SVGContainer className={className}>
-        <g transform="translate(450, 300)">
-            {/* Large 3D wireframe torus illusion */}
-            <g opacity="0.4" stroke="#818cf8" strokeWidth="1" fill="none">
-                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="40s" repeatCount="indefinite" />
-                <ellipse cx="0" cy="0" rx="200" ry="80" transform="rotate(0)" />
-                <ellipse cx="0" cy="0" rx="200" ry="80" transform="rotate(45)" />
-                <ellipse cx="0" cy="0" rx="200" ry="80" transform="rotate(90)" />
-                <ellipse cx="0" cy="0" rx="200" ry="80" transform="rotate(135)" />
-            </g>
-
-            {/* Mathematical Graph Curves */}
-            <path d="M-350 100 C-200 -250, -50 300, 100 -100 S250 150, 350 -50" fill="none" stroke="url(#global-accent)" strokeWidth="4" strokeLinecap="round" filter="url(#glow-heavy)" strokeDasharray="1000">
-                <animate attributeName="stroke-dashoffset" values="1000;0" dur="6s" repeatCount="indefinite" />
-            </path>
-
-            {/* Floating Platonic solid nodes */}
-            <g>
-                <animateTransform attributeName="transform" type="translate" values="0,0; 0,-20; 0,0" dur="4s" repeatCount="indefinite" />
-                <polygon points="0,-60 50,30 -50,30" fill="url(#global-muted)" stroke="#ffffff" strokeWidth="3" filter="url(#shadow)" opacity="0.9" />
-                <circle cx="0" cy="-60" r="6" fill="url(#global-accent)" filter="url(#glow-light)" />
-                <circle cx="50" cy="30" r="6" fill="url(#global-accent)" filter="url(#glow-light)" />
-                <circle cx="-50" cy="30" r="6" fill="url(#global-accent)" filter="url(#glow-light)" />
-                {/* Inner triangle */}
-                <polygon points="0,30 25,-15 -25,-15" fill="none" stroke="#818cf8" strokeWidth="1.5" />
-            </g>
-
-            {/* Scattered math data points */}
-            {[...Array(8)].map((_, i) => (
-                <circle key={i} cx={Math.cos(i) * 150} cy={Math.sin(i) * 100} r="3" fill="#ffffff" opacity="0.4">
-                    <animate attributeName="opacity" values="0.1;0.8;0.1" dur={`${2 + i}s`} repeatCount="indefinite" />
-                </circle>
-            ))}
-        </g>
-    </SVGContainer>
+    <img
+        src="/mohibimaths.png"
+        alt="Mohibi Maths LMS Platform"
+        className={className}
+        style={{ objectFit: 'cover' }}
+    />
 );
 
 // ---------------------------------------------------------------------------
