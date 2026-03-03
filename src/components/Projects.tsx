@@ -9,7 +9,7 @@ import {
     ScolinkAnimation,
     DobeAnimation,
     ArticleMasterAnimation,
-    Le4nAnimation
+    Lea4nAnimation
 } from './ProjectAnimations'
 
 const projects = [
@@ -62,11 +62,11 @@ const projects = [
         featured: false
     },
     {
-        title: 'Le4n',
+        title: 'Lea4n',
         description: 'A context-aware AI platform designed specifically for students to interact flawlessly with extensive PDF materials and extract accurate answers.',
         stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
-        link: 'https://le4n.com',
-        ImageComponent: Le4nAnimation,
+        link: 'https://lea4n.com',
+        ImageComponent: Lea4nAnimation,
         featured: false
     }
 ]
