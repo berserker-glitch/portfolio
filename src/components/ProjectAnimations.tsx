@@ -172,66 +172,22 @@ export const DobeAnimation = ({ className }: { className?: string }) => (
 );
 
 // ---------------------------------------------------------------------------
-// ARTICLE MASTER - Video to Blog Tool (Theme: Media timeline breaking down into lines of code/text)
+// ARTICLE MASTER - Video to Blog Tool
 // ---------------------------------------------------------------------------
+/**
+ * Displays the image for the Article Master video-to-blog tool.
+ * 
+ * @param {Object} props - Component properties
+ * @param {string} [props.className] - Optional CSS classes for styling
+ * @returns {JSX.Element} The image component
+ */
 export const ArticleMasterAnimation = ({ className }: { className?: string }) => (
-    <SVGContainer className={className}>
-        <g transform="translate(450, 300)">
-            {/* Split UI layout simulating transformation left (video) to right (text) */}
-
-            {/* Scanning Laser */}
-            <line x1="-50" y1="-200" x2="-50" y2="200" stroke="#818cf8" strokeWidth="3" filter="url(#glow-heavy)" opacity="0.8">
-                <animate attributeName="x1" values="-200;100;-200" dur="4s" repeatCount="indefinite" />
-                <animate attributeName="x2" values="-200;100;-200" dur="4s" repeatCount="indefinite" />
-            </line>
-
-            {/* Source Video Blocks (Left side) */}
-            <g>
-                <rect x="-250" y="-80" width="120" height="160" rx="8" fill="url(#global-muted)" stroke="#4338ca" strokeWidth="2" filter="url(#shadow)" />
-                {/* Play button */}
-                <polygon points="-200,-15 -170,0 -200,15" fill="url(#global-accent)">
-                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
-                </polygon>
-                {/* Video timeline strip */}
-                <rect x="-250" y="-120" width="120" height="20" fill="url(#global-accent)" opacity="0.2" />
-                <rect x="-250" y="-120" width="40" height="20" fill="#818cf8">
-                    <animate attributeName="width" values="0;120;0" dur="6s" repeatCount="indefinite" />
-                </rect>
-            </g>
-
-            {/* AI Generator Engine (Middle) */}
-            <g>
-                <circle cx="0" cy="0" r="40" fill="none" stroke="url(#global-accent)" strokeWidth="4" strokeDasharray="10 10">
-                    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite" />
-                </circle>
-                <path d="M-15 -15 L15 15 M-15 15 L15 -15" stroke="#ffffff" strokeWidth="3" filter="url(#glow-light)" />
-                {/* Processing data flows */}
-                <path d="M-120 0 Q-60 50 0 0 T120 0" fill="none" stroke="#818cf8" strokeWidth="2" opacity="0.5" strokeDasharray="5 5">
-                    <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite" />
-                </path>
-            </g>
-
-            {/* Generated Text Lines (Right side) cascading into place */}
-            <g>
-                <rect x="130" y="-100" width="180" height="200" rx="4" fill="url(#global-muted)" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.1" filter="url(#shadow)" />
-                {[
-                    { y: -60, w: 140, o: 0.1 },
-                    { y: -30, w: 160, o: 0.3 },
-                    { y: 0, w: 100, o: 0.5 },
-                    { y: 30, w: 150, o: 0.7 },
-                    { y: 60, w: 90, o: 0.9 },
-                ].map((line, i) => (
-                    <g key={i}>
-                        <rect x="150" y={line.y} width={line.w} height="6" rx="3" fill="#ffffff" opacity="0.2" />
-                        <rect x="150" y={line.y} width={line.w} height="6" rx="3" fill="url(#global-accent)">
-                            <animate attributeName="width" values={`0;${line.w}`} dur="2s" begin={`${line.o}s`} repeatCount="indefinite" fill="freeze" />
-                            <animate attributeName="opacity" values="0;1;1" dur="4s" begin={`${line.o}s`} repeatCount="indefinite" />
-                        </rect>
-                    </g>
-                ))}
-            </g>
-        </g>
-    </SVGContainer>
+    <img
+        src="/articlemaster.png"
+        alt="Article Master Video to Blog Tool"
+        className={className}
+        style={{ objectFit: 'cover' }}
+    />
 );
 
 // ---------------------------------------------------------------------------
