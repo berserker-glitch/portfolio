@@ -100,19 +100,6 @@ export default function Projects() {
                     },
                 })
 
-                const img = card.querySelector('.project-img')
-                if (img) {
-                    gsap.to(img, {
-                        yPercent: 15,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top bottom',
-                            end: 'bottom top',
-                            scrub: true,
-                        },
-                    })
-                }
             })
         }, container)
 
