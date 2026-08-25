@@ -9,72 +9,81 @@ import {
     ScolinkAnimation,
     DobeAnimation,
     ArticleMasterAnimation,
-    Lea4nAnimation
+    Lea4nAnimation,
 } from './ProjectAnimations'
 
 const projects = [
     {
         title: '9anon AI',
-        description: 'An intelligent Moroccan legal assistant powered by RAG, effectively navigating thousands of complex legal documents to provide precise insights.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'Legal research assistant',
+        description: 'A Moroccan legal research assistant that retrieves relevant passages from a large document library and turns them into source-backed answers.',
+        stack: ['React', 'Node.js', 'Prisma', 'RAG', 'Tailwind'],
         link: 'https://9anonai.com',
         ImageComponent: AnonAIAnimation,
-        featured: false
+        featured: true,
     },
     {
         title: 'MohibiMaths',
-        description: 'A fully bespoke Learning Management System designed from the ground up to deliver a unified and scalable educational experience.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'Learning platform',
+        description: 'A learning platform built around structured lessons, practice, and a single place for students and teachers to work.',
+        stack: ['React', 'Node.js', 'Prisma', 'Tailwind'],
         link: 'https://mohibimaths.com',
         ImageComponent: MohibiMathsAnimation,
-        featured: false
+        featured: false,
     },
     {
         title: 'El Patio',
-        description: 'A visually striking, highly optimized landing page engineered to maximize conversion rates and elevate brand presence.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'Cultural landing page',
+        description: 'A conversion-focused cultural landing page with a strong visual system, responsive layouts, and a fast path to booking.',
+        stack: ['React', 'Tailwind', 'Responsive UI'],
         link: 'https://elpatiocultural.com',
         ImageComponent: ElPatioAnimation,
-        featured: false
+        featured: false,
     },
     {
         title: 'Scolink',
-        description: 'An all-in-one centralized management tool empowering educational centers to seamlessly orchestrate their daily operations.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'Education operations',
+        description: 'A central workspace for educational centers to organize daily operations, staff, and student records.',
+        stack: ['React', 'Node.js', 'Prisma', 'Tailwind'],
         link: 'https://scolink.ink',
         ImageComponent: ScolinkAnimation,
-        featured: false
+        featured: false,
     },
     {
         title: 'Dobe',
-        description: 'A unified AI workspace aggregating multiple advanced models into a single, intuitive interface—eliminating tab clutter completely.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'AI workspace',
+        description: 'A single workspace for using multiple AI models without jumping between separate tabs and tools.',
+        stack: ['React', 'Node.js', 'AI integrations', 'Tailwind'],
         link: 'https://dobe.chat',
         ImageComponent: DobeAnimation,
-        featured: false
+        featured: false,
     },
     {
         title: 'ArticleMaster',
-        description: 'An automated pipeline tool that ingests YouTube videos and synthesizes them into highly structured, SEO-optimized blog posts.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'Content pipeline',
+        description: 'A pipeline that turns YouTube videos into structured, SEO-ready article drafts.',
+        stack: ['React', 'Node.js', 'YouTube pipeline', 'SEO'],
         link: 'https://github.com/berserker-glitch/article-master',
         ImageComponent: ArticleMasterAnimation,
-        featured: false
+        featured: false,
     },
     {
         title: 'Lea4n',
-        description: 'A context-aware AI platform designed specifically for students to interact flawlessly with extensive PDF materials and extract accurate answers.',
-        stack: ['React', 'Node.js', 'Prisma', 'Shadcn', 'Tailwind'],
+        eyebrow: 'Study assistant',
+        description: 'A study tool that lets students ask questions against their own PDF materials and find grounded answers.',
+        stack: ['React', 'Node.js', 'PDF retrieval', 'Tailwind'],
         link: 'https://lea4n.com',
         ImageComponent: Lea4nAnimation,
-        featured: false
-    }
+        featured: false,
+    },
 ]
 
 export default function Projects() {
     const container = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
         const ctx = gsap.context(() => {
             const cards = gsap.utils.toArray<HTMLElement>('.project-card')
 
@@ -87,11 +96,10 @@ export default function Projects() {
                     scrollTrigger: {
                         trigger: card,
                         start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    }
+                        toggleActions: 'play none none reverse',
+                    },
                 })
 
-                // Image Parallax
                 const img = card.querySelector('.project-img')
                 if (img) {
                     gsap.to(img, {
@@ -102,7 +110,7 @@ export default function Projects() {
                             start: 'top bottom',
                             end: 'bottom top',
                             scrub: true,
-                        }
+                        },
                     })
                 }
             })
@@ -112,76 +120,80 @@ export default function Projects() {
     }, [])
 
     return (
-        <section id="projects" ref={container} className="py-24 md:py-32 border-t border-white/5 relative">
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <section id="projects" ref={container} aria-labelledby="projects-title" className="relative border-t border-white/10 py-24 md:py-32">
+            <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
-            <div className="flex flex-col gap-2 mb-16 md:mb-24">
-                <h3 className="text-primary font-mono text-sm uppercase tracking-widest">[01_ARCHIVE]</h3>
-                <h2 className="text-4xl md:text-6xl font-sans font-bold tracking-tighter uppercase text-foreground">
-                    Selected Systems
+            <div className="mb-16 flex flex-col gap-2 md:mb-24">
+                <p className="font-mono text-sm tracking-widest text-primary">01 / Work</p>
+                <h2 id="projects-title" className="text-4xl font-sans font-bold tracking-tighter text-foreground md:text-6xl">
+                    Selected work
                 </h2>
             </div>
 
-            <div className="flex flex-col gap-16 md:gap-32">
-                {projects.map((project, i) => (
-                    <div
-                        key={i}
-                        className={`project-card relative group flex flex-col ${project.featured ? 'md:flex-col' : i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                            } gap-8 md:gap-16 items-center`}
+            <div className="flex flex-col gap-20 md:gap-32">
+                {projects.map((project, index) => (
+                    <article
+                        key={project.title}
+                        className={`project-card group relative flex flex-col items-center gap-8 ${project.featured ? 'md:flex-col' : index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                            } md:gap-16`}
                     >
-                        {/* Image Block */}
-                        <div className={`relative flex items-center justify-center overflow-hidden rounded-2xl bg-muted/30 border border-white/10 w-full group-hover:border-primary/50 transition-colors duration-500 ${project.featured ? 'h-[50vh] md:h-[70vh]' : 'md:w-[55%] h-[40vh] md:h-[50vh]'
-                            }`}>
-                            <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                        <div
+                            className={`relative flex w-full items-center justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-muted/30 transition-colors duration-500 group-hover:border-primary/50 ${project.featured ? 'h-[50vh] md:h-[70vh]' : 'h-[40vh] md:h-[50vh] md:w-[55%]'
+                                }`}
+                        >
+                            <div className="pointer-events-none absolute inset-0 z-10 bg-primary/20 opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-100" />
                             <project.ImageComponent
-                                className="project-img absolute w-full h-full object-cover object-center opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0"
+                                className="project-img absolute z-0 h-full w-full object-cover object-center opacity-80 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-100"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-10 pointer-events-none" />
+                            <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
 
                             {project.featured && (
-                                <div className="absolute top-6 left-6 flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                    <span className="font-mono text-xs text-primary uppercase tracking-widest bg-background/80 px-2 py-1 rounded backdrop-blur-md border border-white/10">
-                                        Primary Node
+                                <div className="absolute left-6 top-6 flex items-center gap-2">
+                                    <div className="h-2 w-2 rounded-full bg-primary" />
+                                    <span className="rounded border border-white/10 bg-background/80 px-2 py-1 font-mono text-xs tracking-widest text-primary backdrop-blur-md">
+                                        Lead project
                                     </span>
                                 </div>
                             )}
                         </div>
 
-                        {/* Content Block */}
-                        <div className={`flex flex-col gap-6 w-full ${project.featured ? 'md:w-2/3 mx-auto text-center items-center' : 'md:w-[45%]'}`}>
-                            <div className="flex flex-col gap-4">
-                                <h3 className="text-3xl md:text-5xl font-sans font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500">
+                        <div className={`flex w-full flex-col gap-6 ${project.featured ? 'items-center text-center md:w-2/3' : 'md:w-[45%]'}`}>
+                            <div className="flex flex-col gap-3">
+                                <p className="font-mono text-xs tracking-widest text-primary">{project.eyebrow}</p>
+                                <h3 className="text-3xl font-sans font-bold tracking-tighter text-foreground transition-colors duration-500 group-hover:text-primary md:text-5xl">
                                     {project.title}
                                 </h3>
-
-                                <p className="text-lg md:text-xl text-muted-foreground font-serif italic max-w-xl leading-relaxed">
+                                <p className="max-w-xl font-serif text-lg italic leading-relaxed text-muted-foreground md:text-xl">
                                     {project.description}
                                 </p>
                             </div>
 
-                            <div className={`flex flex-wrap gap-2 mt-2 ${project.featured ? 'justify-center' : ''}`}>
-                                {project.stack.map((tech, j) => (
-                                    <span key={j} className="text-xs font-mono text-foreground px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10 group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300 backdrop-blur-sm">
-                                        {tech}
+                            <div className={`flex flex-wrap gap-2 ${project.featured ? 'justify-center' : ''}`}>
+                                {project.stack.map((technology) => (
+                                    <span
+                                        key={technology}
+                                        className="rounded border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-xs text-foreground transition-colors duration-300 group-hover:border-white/20 group-hover:bg-white/[0.08]"
+                                    >
+                                        {technology}
                                     </span>
                                 ))}
                             </div>
 
-                            <div className="mt-8">
+                            <div className="mt-2">
                                 <a
                                     href={project.link}
                                     target="_blank"
-                                    rel="noreferrer"
-                                    className="relative overflow-hidden inline-flex items-center justify-center gap-2 bg-foreground text-background font-bold px-6 py-3 rounded-full hover:scale-105 active:scale-95 transition-all magnetic-target group/btn"
+                                    rel="noopener noreferrer"
+                                    aria-label={`Open ${project.title}`}
+                                    className="magnetic-target group/btn relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-foreground px-6 py-3 font-bold text-background transition-all hover:scale-105 active:scale-95"
                                 >
-                                    <span className="relative z-10 transition-colors duration-300">View Project</span>
-                                    <ArrowUpRight className="relative z-10 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all duration-300" />
-                                    <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
+                                    <span className="relative z-10">Open project</span>
+                                    <ArrowUpRight className="relative z-10 h-4 w-4 transition-all duration-300 group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1" />
+                                    <div className="absolute inset-0 translate-y-full bg-primary transition-transform duration-300 ease-out group-hover/btn:translate-y-0" />
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 ))}
             </div>
         </section>

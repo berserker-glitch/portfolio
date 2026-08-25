@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0B0D0F"/>
+  <circle cx="1030" cy="-40" r="300" fill="#9BAF9F" fill-opacity="0.12"/>
+  <path d="M0 506H1200" stroke="#9BAF9F" stroke-opacity="0.18"/>
+  <path d="M0 550H1200" stroke="white" stroke-opacity="0.05"/>
+  <path d="M0 594H1200" stroke="white" stroke-opacity="0.05"/>
+  <text x="82" y="120" fill="#9BAF9F" font-family="monospace" font-size="22" letter-spacing="4">FULL-STACK DEVELOPER</text>
+  <text x="78" y="300" fill="#F1F4F2" font-family="Arial, sans-serif" font-size="104" font-weight="700" letter-spacing="-5">Yasser</text>
+  <text x="78" y="402" fill="#F1F4F2" font-family="Arial, sans-serif" font-size="104" font-weight="700" letter-spacing="-5">Mbarek</text>
+  <text x="84" y="548" fill="#98A19D" font-family="Georgia, serif" font-size="30" font-style="italic">Full-stack products that hold up in production.</text>
+  <circle cx="1088" cy="544" r="10" fill="#9BAF9F"/>
+</svg>

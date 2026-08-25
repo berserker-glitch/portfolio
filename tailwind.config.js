@@ -7,10 +7,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#000000', // Pure Black
-                foreground: '#EDEDED', // Soft White
-                primary: '#818CF8', // Indigo Accent
-                muted: '#171717', // Neutral Dark
+                background: '#0B0D0F',
+                foreground: '#F1F4F2',
+                primary: '#9BAF9F',
+                muted: '#171B1C',
+                'muted-foreground': '#98A19D',
             },
             fontFamily: {
                 sans: ['Space Grotesk', 'sans-serif'],

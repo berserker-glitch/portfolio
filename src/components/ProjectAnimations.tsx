@@ -19,6 +19,8 @@ export const AnonAIAnimation = ({ className }: { className?: string }) => (
         src="/9anonai.png"
         alt="9anon AI Platform"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );
@@ -38,6 +40,8 @@ export const MohibiMathsAnimation = ({ className }: { className?: string }) => (
         src="/mohibimaths.png"
         alt="Mohibi Maths LMS Platform"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );
@@ -57,6 +61,8 @@ export const ElPatioAnimation = ({ className }: { className?: string }) => (
         src="/elpatio.png"
         alt="El Patio Landing Page"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );
@@ -76,6 +82,8 @@ export const ScolinkAnimation = ({ className }: { className?: string }) => (
         src="/scolink.png"
         alt="Scolink Educational Management"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );
@@ -95,6 +103,8 @@ export const DobeAnimation = ({ className }: { className?: string }) => (
         src="/dobe.png"
         alt="Dobe Unified AI Platform"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );
@@ -114,6 +124,8 @@ export const ArticleMasterAnimation = ({ className }: { className?: string }) =>
         src="/articlemaster.png"
         alt="Article Master Video to Blog Tool"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );
@@ -133,6 +145,8 @@ export const Lea4nAnimation = ({ className }: { className?: string }) => (
         src="/lea4n.png"
         alt="Lea4n Context-Aware PDF Student AI"
         className={className}
+        loading="lazy"
+        decoding="async"
         style={{ objectFit: 'cover' }}
     />
 );

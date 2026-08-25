@@ -1,54 +1,64 @@
-import { Mail, Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Github, Mail } from 'lucide-react'
+
+const githubUrl = 'https://github.com/berserker-glitch'
+const emailUrl = 'mailto:yassermbarek25@gmail.com'
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear()
 
     return (
-        <footer id="footer" className="relative bg-[#0A0A0C] border-t border-white/5 pt-32 pb-12 mt-32 rounded-t-[3rem] overflow-hidden">
-            {/* Decorative Background grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+        <footer
+            id="footer"
+            aria-labelledby="footer-title"
+            className="relative mt-32 overflow-hidden rounded-t-[3rem] border-t border-white/10 bg-background pb-12 pt-32"
+        >
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
-
-                {/* Massive CTA */}
-                <div className="text-center max-w-4xl mx-auto mb-24">
-                    <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-sans font-bold tracking-tighter uppercase text-foreground leading-[0.9] mb-8">
-                        Initiate <br className="hidden md:block" /> Handshake.
+            <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col items-center px-6 md:px-12">
+                <div className="mx-auto mb-24 max-w-4xl text-center">
+                    <h2 id="footer-title" className="mb-8 text-balance font-sans text-5xl font-bold leading-[0.9] tracking-tighter text-foreground md:text-7xl lg:text-[7rem]">
+                        Let's build <br className="hidden md:block" /> something useful.
                     </h2>
                     <a
-                        href="mailto:yassermbarek25@gmail.com"
-                        className="group relative inline-flex items-center gap-4 bg-primary text-background font-mono font-bold text-xl md:text-2xl px-8 py-4 uppercase tracking-widest hover:scale-105 transition-all duration-300 magnetic-target"
+                        href={emailUrl}
+                        className="magnetic-target group relative inline-flex items-center gap-4 bg-primary px-8 py-4 font-mono text-xl font-bold tracking-widest text-background transition-all duration-300 hover:scale-105 md:text-2xl"
                     >
-                        Hire Me
-                        <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        <div className="absolute inset-0 bg-white/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity" />
+                        Start a project
+                        <ArrowUpRight className="h-6 w-6 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                        <span className="absolute inset-0 bg-white/20 opacity-0 mix-blend-overlay transition-opacity group-hover:opacity-100" />
                     </a>
                 </div>
 
-                {/* Links & Status */}
-                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/10 font-mono text-sm">
-
-                    <div className="flex flex-col items-center md:items-start gap-2">
-                        <span className="text-foreground tracking-widest uppercase font-bold">YASSER MBAREK</span>
-                        <span className="text-muted-foreground text-xs">© {currentYear} All rights reserved.</span>
+                <div className="flex w-full flex-col items-center justify-between gap-8 border-t border-white/10 pt-12 font-mono text-sm md:flex-row">
+                    <div className="flex flex-col items-center gap-2 md:items-start">
+                        <span className="font-bold tracking-widest text-foreground">YASSER MBAREK</span>
+                        <span className="text-xs text-muted-foreground">© {currentYear} · Built with care.</span>
                     </div>
 
-                    {/* Socials */}
-                    <div className="flex items-center gap-6">
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-white/5 rounded-full hover:scale-110">
-                            <Github className="w-5 h-5" />
+                    <nav aria-label="Footer links" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+                        <a
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                        >
+                            <Github className="h-4 w-4" />
+                            GitHub
                         </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-white/5 rounded-full hover:scale-110">
-                            <Linkedin className="w-5 h-5" />
+                        <a
+                            href={emailUrl}
+                            className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                        >
+                            <Mail className="h-4 w-4" />
+                            Email
                         </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-white/5 rounded-full hover:scale-110">
-                            <Twitter className="w-5 h-5" />
+                        <a
+                            href="#main-content"
+                            className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                        >
+                            Back to top <ArrowUpRight className="h-4 w-4 -rotate-45" />
                         </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 bg-white/5 rounded-full hover:scale-110">
-                            <Mail className="w-5 h-5" />
-                        </a>
-                    </div>
-
+                    </nav>
                 </div>
             </div>
         </footer>

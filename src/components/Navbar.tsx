@@ -1,73 +1,153 @@
 import { useEffect, useState } from 'react'
+import { Menu, X } from 'lucide-react'
 import { cn } from '../lib/utils'
+
+const navigationItems = [
+    { href: '#projects', label: 'Work' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#footer', label: 'Contact' },
+]
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
+    const [scrollProgress, setScrollProgress] = useState(0)
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [shortcut] = useState(() => (
+        typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
+            ? '⌘ K'
+            : 'Ctrl K'
+    ))
 
     useEffect(() => {
-        const handleScroll = () => {
+        const updateScrollState = () => {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
+            const progress = scrollableHeight > 0
+                ? (window.scrollY / scrollableHeight) * 100
+                : 0
+
             setScrolled(window.scrollY > 50)
+            setScrollProgress(Math.min(100, Math.max(0, progress)))
         }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
+
+        let frame: number | null = null
+        const handleScroll = () => {
+            if (frame !== null) return
+
+            frame = requestAnimationFrame(() => {
+                updateScrollState()
+                frame = null
+            })
+        }
+
+        updateScrollState()
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        window.addEventListener('resize', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            window.removeEventListener('resize', handleScroll)
+            if (frame !== null) cancelAnimationFrame(frame)
+        }
     }, [])
+
+    const closeMenu = () => setMenuOpen(false)
+
+    const openCommandPalette = () => {
+        window.dispatchEvent(new Event('open-command-palette'))
+    }
 
     return (
         <>
-            {/* Top scroll progress bar */}
-            <div className="fixed top-0 left-0 right-0 h-[2px] z-50 bg-white/5">
+            <div aria-hidden="true" className="fixed left-0 right-0 top-0 z-50 h-px bg-white/10">
                 <div
-                    className="h-full bg-primary transition-all duration-300 ease-out origin-left"
-                    style={{
-                        width: `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`
-                    }}
+                    className="h-full origin-left bg-primary transition-[width] duration-150 ease-out"
+                    style={{ width: `${scrollProgress}%` }}
                 />
             </div>
 
-            <nav className={cn(
-                "fixed top-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 rounded-full px-6 py-3 flex items-center gap-8 md:gap-12 border font-mono text-sm",
-                scrolled
-                    ? "bg-background/60 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] scale-100"
-                    : "bg-transparent border-transparent scale-105"
-            )}>
-                {/* Monogram */}
-                <div className="flex items-center gap-2 font-bold text-foreground hover:text-primary transition-colors cursor-pointer group">
-                    <span className="hidden sm:inline-block tracking-tighter">Y.MBRK</span>
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+            <nav
+                aria-label="Primary navigation"
+                className={cn(
+                    'fixed left-4 right-4 top-4 z-40 flex flex-wrap items-center justify-between gap-x-6 border px-4 py-3 font-mono text-sm transition-[background-color,box-shadow,transform,border-radius] duration-500 md:left-1/2 md:right-auto md:w-auto md:-translate-x-1/2 md:justify-normal md:px-6',
+                    menuOpen
+                        ? 'rounded-2xl border-white/10 bg-background/95 shadow-[0_8px_32px_rgba(7,12,12,0.45)] backdrop-blur-xl'
+                        : scrolled
+                            ? 'rounded-full border-white/10 bg-background/75 shadow-[0_8px_32px_rgba(7,12,12,0.45)] backdrop-blur-xl'
+                            : 'rounded-full border-transparent bg-transparent md:scale-105',
+                )}
+            >
+                <a
+                    href="#main-content"
+                    onClick={closeMenu}
+                    className="group flex items-center gap-2 font-bold tracking-tight text-foreground transition-colors hover:text-primary"
+                    aria-label="Yasser Mbarek, home"
+                >
+                    <span>Y.MBRK</span>
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary opacity-0 transition-opacity group-hover:opacity-100" />
+                </a>
+
+                <div className="hidden items-center gap-8 text-muted-foreground md:flex">
+                    {navigationItems.map((item) => (
+                        <a
+                            key={item.href}
+                            href={item.href}
+                            className="group relative transition-colors hover:text-foreground"
+                        >
+                            {item.label}
+                            <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                        </a>
+                    ))}
                 </div>
 
-                {/* Links */}
-                <div className="hidden md:flex items-center gap-8 text-muted-foreground">
-                    <a href="#projects" className="relative group transition-colors hover:text-foreground">
-                        /work
-                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
-                    </a>
-                    <a href="#skills" className="relative group transition-colors hover:text-foreground">
-                        /stack
-                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
-                    </a>
-                    <a href="mailto:yassermbarek25@gmail.com" className="relative group transition-colors hover:text-foreground">
-                        /contact
-                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
-                    </a>
-                </div>
-
-                {/* Actions */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     <button
-                        className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md bg-white/[0.03] border border-white/5 hover:bg-white/[0.08]"
-                        onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                        type="button"
+                        aria-label="Open command palette"
+                        className="hidden items-center gap-2 rounded-md border border-white/10 bg-white/[0.03] px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-white/[0.08] hover:text-foreground sm:flex"
+                        onClick={openCommandPalette}
                     >
-                        <span className="opacity-50 font-sans">⌘</span>K
+                        <span className="opacity-60">{shortcut}</span>
                     </button>
 
                     <a
                         href="#footer"
-                        className="relative overflow-hidden bg-foreground text-background font-bold px-5 py-2 rounded-full hover:scale-105 active:scale-95 transition-all magnetic-target inline-block group"
+                        onClick={closeMenu}
+                        className="magnetic-target inline-flex items-center rounded-full bg-foreground px-4 py-2 font-bold text-background transition-all hover:scale-105 active:scale-95 sm:px-5"
                     >
-                        <span className="relative z-10 group-hover:text-background transition-colors duration-300">Hire me</span>
-                        <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                        <span>Let's talk</span>
                     </a>
+
+                    <button
+                        type="button"
+                        aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                        aria-expanded={menuOpen}
+                        aria-controls="mobile-navigation"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-foreground transition-colors hover:bg-white/10 md:hidden"
+                        onClick={() => setMenuOpen((open) => !open)}
+                    >
+                        {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                    </button>
+                </div>
+
+                <div
+                    id="mobile-navigation"
+                    className={cn(
+                        'basis-full overflow-hidden transition-[max-height,opacity,padding] duration-300 md:hidden',
+                        menuOpen ? 'max-h-60 border-t border-white/10 pt-3 opacity-100' : 'pointer-events-none max-h-0 opacity-0',
+                    )}
+                >
+                    <div className="flex flex-col gap-1">
+                        {navigationItems.map((item) => (
+                            <a
+                                key={item.href}
+                                href={item.href}
+                                onClick={closeMenu}
+                                className="rounded-lg px-3 py-2.5 text-muted-foreground transition-colors hover:bg-white/[0.05] hover:text-foreground"
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </nav>
         </>

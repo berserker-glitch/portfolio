@@ -33,6 +33,8 @@ export default function Stack() {
     const containerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
         const ctx = gsap.context(() => {
             gsap.from('.stack-card', {
                 y: 40,
@@ -51,16 +53,16 @@ export default function Stack() {
     }, [])
 
     return (
-        <section id="stack" ref={containerRef} className="py-24 md:py-32 border-t border-white/5 relative">
+        <section id="skills" ref={containerRef} aria-labelledby="skills-title" className="relative border-t border-white/10 py-24 md:py-32">
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
             <div className="flex flex-col gap-2 mb-16 md:mb-24">
-                <h3 className="text-primary font-mono text-sm uppercase tracking-widest">[02_STACK]</h3>
-                <h2 className="text-4xl md:text-6xl font-sans font-bold tracking-tighter uppercase text-foreground">
-                    Technical Arsenal
+                <h3 className="font-mono text-sm tracking-widest text-primary">02 / Skills</h3>
+                <h2 id="skills-title" className="text-4xl font-sans font-bold tracking-tighter text-foreground md:text-6xl">
+                    Tools I use
                 </h2>
-                <p className="text-muted-foreground font-serif italic text-lg md:text-xl max-w-2xl mt-4">
-                    A structured breakdown of the technologies and frameworks I use to engineer robust, scalable solutions from the database up to the client interface.
+                <p className="mt-4 max-w-2xl font-serif text-lg italic leading-relaxed text-muted-foreground md:text-xl">
+                    I work across the product: shaping the interface, building the systems behind it, and keeping the whole thing dependable in production.
                 </p>
             </div>
 

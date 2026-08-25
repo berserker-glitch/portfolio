@@ -4,20 +4,37 @@
 
 @layer base {
   :root {
-    --background: #000000;
-    --foreground: #EDEDED;
-    --primary: #818CF8;
-    --muted: #171717;
-    --muted-foreground: #A3A3A3;
+    --background: #0b0d0f;
+    --foreground: #f1f4f2;
+    --primary: #9baf9f;
+    --muted: #171b1c;
+    --muted-foreground: #98a19d;
+    color-scheme: dark;
   }
-}
 
-@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans overflow-x-hidden selection:bg-primary/30 selection:text-primary;
+    @apply overflow-x-hidden bg-background font-sans text-foreground antialiased selection:bg-primary/30 selection:text-primary;
+    min-width: 320px;
+    background-image:
+      radial-gradient(circle at 78% -8%, rgba(155, 175, 159, 0.1), transparent 30%),
+      radial-gradient(circle at 0% 24%, rgba(255, 255, 255, 0.025), transparent 22%);
   }
 
-  /* Lenis smooth scroll recommended baseline */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+  }
+
+  /* Lenis smooth scroll baseline */
   html.lenis,
   html.lenis body {
     height: auto;
@@ -42,16 +59,63 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px rgba(129, 140, 248, 0.4);
-    /* Indigo glow */
+    text-shadow: 0 0 20px rgba(155, 175, 159, 0.28);
   }
 
   .glass-panel {
-    @apply bg-muted/60 backdrop-blur-md border border-white/5;
+    @apply border border-white/5 bg-muted/60 backdrop-blur-md;
   }
 }
 
-/* Custom Scrollbar for Hacker Edge */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border: 1px solid var(--primary);
+  background: var(--background);
+  padding: 0.65rem 0.9rem;
+  color: var(--foreground);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.custom-cursor {
+  opacity: 0;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .custom-cursor-page {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
